@@ -71,17 +71,15 @@ public class UpdateCreatedContact extends TestBase{
     @Test
     public void updateContactsUnauthorizedTest() {
 
-        System.out.println(contact);
-        String message =  given()
+        given()
                 .contentType(ContentType.JSON)
                 .header(AUTH, "")
                 .body(contact)
                 .when()
                 .put("contacts")
                 .then()
-                .assertThat().statusCode(401)
-                .extract().path("error");
-        System.out.println(message);
+                .assertThat().statusCode(401);
+
     }
 
     @Test
